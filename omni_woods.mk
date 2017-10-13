@@ -20,3 +20,17 @@ $(call inherit-product, vendor/omni/config/common.mk)
 $(call inherit-product, device/motorola/woods/full_woods.mk)
 
 PRODUCT_NAME := omni_woods
+
+
+# Ramdisk
+PRODUCT_PACKAGES += \
+    $(LOCAL_PATH)/recovery/root/fstab.mt6735:root/fstab.mt6735 \
+    $(LOCAL_PATH)/recovery/root/init.mt6735.power.rc:root/init.mt6735.power.rc \
+    $(LOCAL_PATH)/recovery/root/init.recovery.mt6735.rc:root/init.recovery.mt6735.rc \
+    $(LOCAL_PATH)/recovery/root/ueventd.mt6735.rc:root/ueventd.mt6735.rc
+
+# F2FS
+PRODUCT_PACKAGES += \
+    mkfs.f2fs \
+    fsck.f2fs \
+	fibmap.f2fs

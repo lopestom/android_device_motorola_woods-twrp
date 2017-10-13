@@ -28,10 +28,14 @@ ARCH_ARM_HAVE_TLS_REGISTER := true
 
 TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
+BOARD_GLOBAL_CFLAGS += -DADD_LEGACY_ACQUIRE_BUFFER_SYMBOL
 
 TARGET_BOARD_PLATFORM := mt6737m
 TARGET_NO_BOOTLOADER := true
-TARGET_BOOTLOADER_BOARD_NAME := MT6735
+TARGET_BOOTLOADER_BOARD_NAME := mt6735
+
+# Charger
+BOARD_CHARGER_SHOW_PERCENTAGE := true
 
 BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,32N2 androidboot.selinux=permissive
 BOARD_KERNEL_OFFSET := 0x00008000
@@ -64,6 +68,7 @@ TW_INCLUDE_CRYPTO := true
 
 # TWRP stuff
 TW_THEME := portrait_hdpi
+TARGET_RECOVERY_PIXEL_FORMAT := "RGBA_8888"
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
 TW_NO_REBOOT_BOOTLOADER := true
 TW_BRIGHTNESS_PATH := /sys/devices/platform/leds-mt65xx/leds/lcd-backlight/brightness
@@ -88,8 +93,12 @@ TW_CRYPTO_FS_OPTIONS := "nosuid,nodev,noatime,discard,noauto_da_alloc,data=order
 TW_NO_USB_STORAGE := true
 TW_DEFAULT_LANGUAGE := en-US
 TW_INCLUDE_LOGCAT := true
-TARGET_USERIMAGES_USE_F2FS := true
 TARGET_USERIMAGES_USE_EXT4 := true
+TWHAVE_SELINUX := true
+TW_DEFAULT_BRIGHTNESS := 80
+TW_NEW_ION_HEAP := true
+TW_NO_SCREEN_BLANK := true
+TW_FLASH_FROM_STORAGE := true
 
 #
 $(shell mkdir -p $(OUT)/obj/KERNEL_OBJ/usr)
