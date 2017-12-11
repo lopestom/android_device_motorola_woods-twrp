@@ -25,6 +25,8 @@ TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_VARIANT := cortex-a53
 TARGET_CPU_SMP := true
 ARCH_ARM_HAVE_TLS_REGISTER := true
+#
+BOARD_HAS_NO_SELECT_BUTTON := true
 
 TARGET_BOARD_PLATFORM := mt6737m
 TARGET_NO_BOOTLOADER := true
@@ -51,30 +53,52 @@ BOARD_CACHEIMAGE_PARTITION_SIZE := 419430400
 BOARD_FLASH_BLOCK_SIZE := 131072
 TARGET_KMODULES := true
 
+#Recovery FSTAB
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/etc/recovery.fstab
 
 # TWRP stuff
+TW_DEVICE_VERSION := opr1-᭼woods᭼
+#========set woods dpi========#
 DEVICE_RESOLUTION := 720x1280
+TARGET_SCREEN_HEIGHT := 1280
+TARGET_SCREEN_WIDTH := 720
+#========end #set========#
 TW_THEME := portrait_hdpi
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBA_8888"
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
-TW_NO_REBOOT_BOOTLOADER := true
 TW_BRIGHTNESS_PATH := /sys/devices/platform/leds-mt65xx/leds/lcd-backlight/brightness
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/mt_usb/musb-hdrc.0.auto/gadget/lun%d/file
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun/file
 TW_MAX_BRIGHTNESS := 255
+TW_DEFAULT_BRIGHTNESS := 120		
 TW_EXCLUDE_SUPERSU := true
 TW_INCLUDE_FB2PNG := true
+TW_USE_MODEL_HARDWARE_ID_FOR_DEVICE_ID := true
 TW_NO_CPU_TEMP := true
-TW_REBOOT_BOOTLOADER := true
 TW_REBOOT_RECOVERY := true
-TW_HAS_DOWNLOAD_MODE := true
-TW_EXCLUDE_SUPERSU := true
 TW_USE_TOOLBOX := true
+RECOVERY_SDCARD_ON_DATA := true
+TW_INTERNAL_STORAGE_PATH := "/emmc"
+TW_INTERNAL_STORAGE_MOUNT_POINT := "emmc"
+TW_EXTERNAL_STORAGE_PATH := "/external_sd"
+TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
+TW_INCLUDE_CRYPTO := true
+TW_CRYPTO_FS_TYPE := "ext4"
 TARGET_USERIMAGES_USE_EXT4 := true
+TW_CUSTOM_CPU_TEMP_PATH := /sys/devices/virtual/thermal/thermal_zone1/temp
 TW_HAVE_SELINUX := true
+TW_DEFAULT_LANGUAGE := en
+TW_HAS_MTP := true
+TW_CRYPTO_MNT_POINT := "/data"
+TW_CRYPTO_FS_OPTIONS := "nosuid,nodev,noatime,discard,noauto_da_alloc,data=ordered"
+TW_NEVER_UNMOUNT_SYSTEM := true
+TW_CUSTOM_BATTERY_PATH := "/sys/devices/platform/battery/power_supply/battery"
+TW_ALWAYS_RMRF := true
+TW_NO_SCREEN_BLANK := true
+
 
 BOARD_SEPOLICY_DIRS := \
-       device/motorola/woods/sepolicy
+       $(DEVICE_PATH)/sepolicy
 
 #
 $(shell mkdir -p $(OUT)/obj/KERNEL_OBJ/usr)

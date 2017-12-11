@@ -25,5 +25,12 @@ PRODUCT_NAME := omni_woods
 PRODUCT_PACKAGES += \
     $(LOCAL_PATH)/recovery/root/init.mt6735.power.rc:root/init.mt6735.power.rc \
     $(LOCAL_PATH)/recovery/root/init.recovery.mt6735.rc:root/init.recovery.mt6735.rc \
+    $(LOCAL_PATH)/recovery/root/init.recovery.service.rc:root/init.recovery.service.rc \
+    $(LOCAL_PATH)/recovery/root/init.recovery.usb.rc:root/init.recovery.usb.rc \
     $(LOCAL_PATH)/recovery/root/ueventd.mt6735.rc:root/ueventd.mt6735.rc
 
+#fix mtp
+PRODUCT_PACKAGES += \
+    $(LOCAL_PATH)/recovery/root/sbin/libtwrpmtp.so:root/sbin/libtwrpmtp.so \
+    $(LOCAL_PATH)/recovery/root/sbin/libusbhost.so:root/sbin/libusbhost.so \
+    $(LOCAL_PATH)/recovery/root/sbin/healthd:root/sbin/healthd

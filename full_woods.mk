@@ -25,7 +25,7 @@ PRODUCT_MODEL := Moto E4
 PRODUCT_MANUFACTURER := motorola
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-		TARGET_DEVICE="woods_retail" \
+		TARGET_DEVICE="woods" \
 		PRODUCT_NAME="woods" \
 		BUILD_FINGERPRINT="motorola/woods_retail/woods:7.1.1/NMA26.42-11-3/3:user/release-keys" \
 		PRIVATE_BUILD_DESC="woods_retail-user 7.1.1 NMA26.42-11-3 release-keys" \
